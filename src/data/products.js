@@ -143,27 +143,7 @@ export const productCategories = [
         catalogLinks: [
             { name: 'Aquasafe Pipes Catalog', url: '/aquasafe-catalog', count: 166 }
         ]
-    },
-    {
-        id: 'tanks',
-        name: 'Water Storage Tanks',
-        slug: 'tanks',
-        tagline: 'PREMIUM WATER STORAGE',
-        description: 'High-quality water storage tanks in various capacities',
-        image: '/images/water-tanks.jpg',
-        features: ['UV stabilized', 'Food grade', 'Multiple sizes', 'Leak proof'],
-        productCount: null
-    },
-    {
-        id: 'fittings',
-        name: 'Fittings & Accessories',
-        slug: 'fittings',
-        tagline: 'COMPLETE FITTING SOLUTIONS',
-        description: 'Comprehensive range of pipe fittings and accessories',
-        image: '/images/fittings.jpg',
-        features: ['Wide variety', 'Perfect fit', 'Quality tested', 'Standard sizes'],
-        productCount: null
-    },
+    }
 ];
 
 // Merge CPVC catalog products with sample products

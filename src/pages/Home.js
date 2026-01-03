@@ -64,7 +64,7 @@ const Home = () => {
 
                     <div className="products-showcase">
                         {productCategories
-                            .filter(cat => ['cpvc', 'aquarius', 'silencio', 'drainmaster', 'drainpro', 'drex', 'underground', 'telerex', 'foamcore', 'aquasafe'].includes(cat.slug))
+                            .filter(cat => ['cpvc', 'aquarius', 'silencio', 'drainmaster', 'drex'].includes(cat.slug))
                             .map((category, index) => (
                                 <ProductTile key={category.id} category={category} index={index} />
                             ))}

@@ -25,34 +25,23 @@
     margin-bottom: var(--space-2);
 }
 
-.footer-logo .logo-text {
-    display: flex;
-    align-items: baseline;
-    gap: var(--space-1);
-    font-size: var(--font-2xl);
-    font-weight: var(--font-extrabold);
-    line-height: 1;
-    margin-bottom: 4px;
-}
-
-.footer-logo .logo-primary {
-    color: var(--color-primary);
-}
-
-.footer-logo .logo-secondary {
-    color: var(--color-white);
-}
-
-.footer-logo .logo-tagline {
-    font-size: var(--font-xs);
-    color: var(--color-gray-400);
-    font-weight: var(--font-medium);
+.footer-logo-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
 }
 
 .footer-desc {
     font-size: var(--font-sm);
     line-height: 1.6;
     color: var(--color-gray-400);
+}
+
+.footer-gstin {
+    font-size: var(--font-xs);
+    color: var(--color-gray-500);
+    font-family: monospace;
 }
 
 .footer .whatsapp-btn {

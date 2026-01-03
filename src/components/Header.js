@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
+import snLogo from '../assets/SN-logo.png';
 import './Header.css';
 
 const Header = () => {
@@ -31,8 +32,8 @@ const Header = () => {
         { path: '/contact', label: 'Contact' },
     ];
 
-    const whatsappNumber = '+919876543210'; // Replace with actual number
-    const phoneNumber = '+919876543210'; // Replace with actual number
+    const whatsappNumber = '919844552994';
+    const phoneNumber = '+919844552994';
 
     return (
         <>
@@ -41,11 +42,8 @@ const Header = () => {
                     <div className="header-content">
                         {/* Logo */}
                         <Link to="/" className="header-logo">
-                            <div className="logo-text">
-                                <span className="logo-primary">SN</span>
-                                <span className="logo-secondary">Enterprises</span>
-                            </div>
-                            <div className="logo-tagline">Authorized Astral Pipes Dealer</div>
+                            <img src={snLogo} alt="S.N Enterprises" className="logo-image" />
+                            <span className="logo-text-below">Enterprises</span>
                         </Link>
 
                         {/* Desktop Navigation */}

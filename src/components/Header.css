@@ -33,37 +33,36 @@
 .header-logo {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    align-items: center;
     text-decoration: none;
     transition: transform var(--transition-fast);
+    gap: 2px;
 }
 
 .header-logo:hover {
     transform: translateY(-2px);
 }
 
-.logo-text {
-    display: flex;
-    align-items: baseline;
-    gap: var(--space-1);
-    font-size: var(--font-2xl);
-    font-weight: var(--font-extrabold);
-    line-height: 1;
+.logo-image {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
 }
 
-.logo-primary {
-    color: var(--color-primary);
+.logo-text-below {
+    font-size: 11px;
+    font-weight: var(--font-bold);
+    color: var(--color-gray-700);
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-.logo-secondary {
-    color: var(--color-gray-800);
+.header-scrolled .logo-image {
+    height: 36px;
 }
 
-.logo-tagline {
-    font-size: var(--font-xs);
-    color: var(--color-gray-500);
-    font-weight: var(--font-medium);
-    letter-spacing: 0.5px;
+.header-scrolled .logo-text-below {
+    font-size: 10px;
 }
 
 /* Navigation */

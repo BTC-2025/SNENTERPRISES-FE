@@ -1,15 +1,18 @@
 // General content and company information
 
 export const companyInfo = {
-    name: 'SN Enterprises',
+    name: 'S.N Enterprises',
     tagline: 'Authorized Astral Pipes Dealer',
     description: 'Your trusted partner for premium Astral pipe products. We supply genuine CPVC, UPVC, SWR pipes, water tanks, and fittings with competitive dealer pricing and reliable delivery.',
 
     contact: {
-        phone: '+91 98765 43210',
-        whatsapp: '+919876543210',
-        email: 'info@snenterprises.com',
-        address: '123 Industrial Area, Sector 45, City Name - 110001',
+        phone: '+91 9844552994',
+        whatsapp: '919844552994',
+        email: 'snpipes2020@gmail.com',
+        address: 'GROUND FLOOR, SHOP SITE NO 118, SY. NO 148 MAIN ROAD KUDUKU VILLAGE, SARJAPURA HOBLI, KSRP AMRUTHA COLLEGE, Kammasandra Anekal Taluka, BANGALORE, Bengaluru Urban, Karnataka - 560100',
+        gstin: '29ADNPU0612J1Z7',
+        state: 'Karnataka',
+        stateCode: '29',
     },
 
     hours: {
@@ -17,8 +20,8 @@ export const companyInfo = {
         weekend: 'Sunday: Closed',
     },
 
-    established: '2010',
-    experience: '14+ years',
+    established: '2020',
+    experience: '5+ years',
 };
 
 export const services = [
@@ -81,8 +84,8 @@ export const whyChooseUs = [
     },
     {
         id: 'experience',
-        title: '14+ Years Experience',
-        description: 'Trusted by contractors, builders, and retailers since 2010',
+        title: '5+ Years Experience',
+        description: 'Trusted by contractors, builders, and retailers since 2020',
         icon: 'Star',
     },
     {
@@ -94,11 +97,11 @@ export const whyChooseUs = [
 ];
 
 export const aboutContent = {
-    story: `SN Enterprises has been a leading authorized dealer of Astral Pipes since 2010. With over 14 years of experience in the plumbing and piping industry, we have built a reputation for supplying genuine, high-quality products at competitive prices.
+    story: `S.N Enterprises has been a leading authorized dealer of Astral Pipes since 2020. Based in Bangalore, we have built a reputation for supplying genuine, high-quality products at competitive prices.
 
-Our commitment to excellence and customer satisfaction has made us the preferred choice for contractors, builders, architects, and retailers across the region. We understand the critical importance of reliable piping systems in construction and infrastructure projects.
+Our commitment to excellence and customer satisfaction has made us the preferred choice for contractors, builders, architects, and retailers across Karnataka. We understand the critical importance of reliable piping systems in construction and infrastructure projects.
 
-From small residential requirements to large-scale commercial and industrial projects, SN Enterprises delivers consistent quality, timely service, and expert guidance.`,
+From small residential requirements to large-scale commercial and industrial projects, S.N Enterprises delivers consistent quality, timely service, and expert guidance.`,
 
     mission: 'To provide genuine Astral pipe products with exceptional service, competitive pricing, and reliable delivery, building long-term partnerships with our customers.',
 
