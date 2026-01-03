@@ -87,8 +87,9 @@ const Footer = () => {
 
             {/* Footer Bottom */}
             <div className="footer-bottom">
-                <div className="container">
-                    <p>&copy; {currentYear} S.N Enterprises. All rights reserved. Authorized Astral Pipes Dealer.</p>
+                <div className="container footer-bottom-content">
+                    <p>&copy; {currentYear} S.N Enterprises. All rights reserved.</p>
+                    <p className="footer-credit">Designed & Developed by <a href="https://burjtechconsultancy.com" target="_blank" rel="noopener noreferrer">Burj Tech Consultancy</a></p>
                 </div>
             </div>
         </footer>

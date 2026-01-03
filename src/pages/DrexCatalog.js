@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Search, ShoppingCart, ChevronDown, ChevronUp } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useParallax } from '../hooks/useParallax';
-import { drexCatalog, formatPrice, getAllDrexProducts, getDrexSizes, getDrexTypes } from '../data/drexCatalog';
+import { drexCatalog, formatPrice, getAllDrexProducts, getDrexTypes } from '../data/drexCatalog';
 import { companyInfo } from '../data/content';
 import './DrexCatalog.css';
 

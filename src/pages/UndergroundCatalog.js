@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Search, ShoppingCart, ChevronDown, ChevronUp } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useParallax } from '../hooks/useParallax';
-import { undergroundCatalog, formatPrice, getAllUndergroundProducts, getUndergroundFittingTypes, getUndergroundStiffnessClasses } from '../data/undergroundCatalog';
+import { undergroundCatalog, formatPrice, getAllUndergroundProducts } from '../data/undergroundCatalog';
 import { companyInfo } from '../data/content';
 import './UndergroundCatalog.css';
 

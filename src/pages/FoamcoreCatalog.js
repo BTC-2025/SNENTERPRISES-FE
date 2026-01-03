@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Search, ShoppingCart, ChevronDown, ChevronUp } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useParallax } from '../hooks/useParallax';
-import { foamcoreCatalog, formatPrice, getAllFoamcoreProducts, getFoamcoreFittingTypes, getFoamcoreStiffnessClasses } from '../data/foamcoreCatalog';
+import { foamcoreCatalog, formatPrice, getAllFoamcoreProducts } from '../data/foamcoreCatalog';
 import { companyInfo } from '../data/content';
 import './FoamcoreCatalog.css';
 

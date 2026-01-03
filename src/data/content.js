@@ -2,7 +2,7 @@
 
 export const companyInfo = {
     name: 'S.N Enterprises',
-    tagline: 'Authorized Astral Pipes Dealer',
+    tagline: 'Authorized Super Platinum Dealer of Astral Pipes',
     description: 'Your trusted partner for premium Astral pipe products. We supply genuine CPVC, UPVC, SWR pipes, water tanks, and fittings with competitive dealer pricing and reliable delivery.',
 
     contact: {
@@ -21,7 +21,7 @@ export const companyInfo = {
     },
 
     established: '2020',
-    experience: '5+ years',
+    experience: '6+ years',
 };
 
 export const services = [
@@ -84,7 +84,7 @@ export const whyChooseUs = [
     },
     {
         id: 'experience',
-        title: '5+ Years Experience',
+        title: '6+ Years Experience',
         description: 'Trusted by contractors, builders, and retailers since 2020',
         icon: 'Star',
     },

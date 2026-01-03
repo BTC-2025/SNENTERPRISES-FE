@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Search, ShoppingCart, ChevronDown, ChevronUp } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useParallax } from '../hooks/useParallax';
-import { aquasafeCatalog, formatPrice, getAllAquasafeProducts, getAquasafePressureClasses } from '../data/aquasafeCatalog';
+import { aquasafeCatalog, formatPrice, getAllAquasafeProducts } from '../data/aquasafeCatalog';
 import { companyInfo } from '../data/content';
 import './AquasafeCatalog.css';
 
