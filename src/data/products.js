@@ -1,6 +1,18 @@
 // Product data for SN Enterprises - Astral Product Lines
 import { getAllCPVCProducts } from './cpvcCatalog';
 
+// Product Images
+import cpvcImage from '../assets/astral-cpvc-pro-pipes-218.png';
+import aquariusImage from '../assets/astral-aquarius-upvc-pipes-1000x1000.png';
+import silencioImage from '../assets/Astral_Silencio_Front-Shot.png';
+import drainmasterImage from '../assets/astral-drainmaster-pvc-swr-drainage-system-500x500.webp';
+import drainproImage from '../assets/Astral_Drain-Pro_Front-Shot.png';
+import drexImage from '../assets/Astral_D-Rex_.webp';
+import undergroundImage from '../assets/astral-underground-pvc-underground-drainage-system-500x500.png';
+import telerexImage from '../assets/Astral_Telerex-v1.png';
+import foamcoreImage from '../assets/astral-foam-core-pvc-pipe-1000x1000.png';
+import aquasafeImage from '../assets/Astral_Aquasafe_Font-Shot.png';
+
 export const productCategories = [
     {
         id: 'cpvc-pro',
@@ -8,7 +20,7 @@ export const productCategories = [
         slug: 'cpvc',
         tagline: 'ADVANCED HOT AND COLD WATER PLUMBING SYSTEM',
         description: 'Premium CPVC pipes and fittings for hot and cold water distribution with superior durability',
-        image: '/images/cpvc-pipes.jpg',
+        image: cpvcImage,
         features: ['Hot & cold water', 'Corrosion resistant', 'Long lasting', 'Easy installation'],
         productCount: 89,
         catalogLinks: [
@@ -21,7 +33,7 @@ export const productCategories = [
         slug: 'aquarius',
         tagline: 'LEAD-FREE PORTABLE WATER TRANSPORT SYSTEM',
         description: 'Lead-free plumbing pipes for safe potable water transport',
-        image: '/images/aquarius-pipes.jpg',
+        image: aquariusImage,
         features: ['Lead-free', 'Pressure resistant', 'Food grade', 'Long service life'],
         productCount: 52,
         catalogLinks: [
@@ -34,7 +46,7 @@ export const productCategories = [
         slug: 'silencio',
         tagline: 'THE COMPLETE LOW NOISE DRAINAGE SYSTEM',
         description: 'Low noise drainage pipes with German technology and 3-layer construction',
-        image: '/images/silencio-pipes.jpg',
+        image: silencioImage,
         features: ['Sound insulation', 'Noise reduction', '3-layer construction', 'German technology'],
         productCount: 67,
         catalogLinks: [
@@ -47,7 +59,7 @@ export const productCategories = [
         slug: 'drainmaster',
         tagline: 'SUPERIOR SWR SELFIT AND RING FIT DRAINAGE SYSTEM',
         description: 'Superior SWR Selfit and Ring Fit drainage pipes - ISI certified',
-        image: '/images/drainmaster-pipes.jpg',
+        image: drainmasterImage,
         features: ['IS:13592 certified', 'IS:14735 certified', 'Selfit system', 'Ring Fit system'],
         productCount: 90,
         catalogLinks: [
@@ -60,7 +72,7 @@ export const productCategories = [
         slug: 'drainpro',
         tagline: 'THE ADVANCED PP SWR SYSTEM',
         description: 'Advanced PP SWR pipes made with German technology - ICON approved',
-        image: '/images/drainpro-pipes.jpg',
+        image: drainproImage,
         features: ['German technology', 'ICON approved', '13DB Q\'z ips', 'Advanced SWR'],
         productCount: 58,
         catalogLinks: [
@@ -73,7 +85,7 @@ export const productCategories = [
         slug: 'drex',
         tagline: 'DOUBLE WALLED CORRUGATED UNDERGROUND DRAINAGE SYSTEM',
         description: 'Double walled corrugated pipes - IS:16098 (Part-2) certified',
-        image: '/images/drex-pipes.jpg',
+        image: drexImage,
         features: ['IS:16098 certified', 'SN4/SN8 classes', 'Rodent repellent', 'Underground use'],
         productCount: 110,
         catalogLinks: [
@@ -86,7 +98,7 @@ export const productCategories = [
         slug: 'underground',
         tagline: 'PVC UNDERGROUND DRAINAGE & SEWERAGE SYSTEM',
         description: 'PVC Underground drainage and sewerage pipes - IS:15328 certified',
-        image: '/images/underground-pipes.jpg',
+        image: undergroundImage,
         features: ['IS:15328 certified', 'Selfit & Ringfit', 'SN2/SN4/SN8 classes', 'Underground use'],
         productCount: 48,
         catalogLinks: [
@@ -99,7 +111,7 @@ export const productCategories = [
         slug: 'telerex',
         tagline: 'DOUBLE WALLED CORRUGATED PE PIPES FOR CABLE PROTECTION',
         description: 'Double walled corrugated PE pipes for signalling, telecom & power cable protection - IS:16205',
-        image: '/images/telerex-pipes.jpg',
+        image: telerexImage,
         features: ['IS:16205 certified', '450N/750N ratings', 'Cable protection', 'RR/NFP options'],
         productCount: 180,
         catalogLinks: [
@@ -112,7 +124,7 @@ export const productCategories = [
         slug: 'foamcore',
         tagline: 'STRONG AND LIGHTWEIGHT DRAINAGE SYSTEM',
         description: 'Strong and lightweight PVC-D drainage pipes - IS:16098 (PT-1) certified',
-        image: '/images/foamcore-pipes.jpg',
+        image: foamcoreImage,
         features: ['IS:16098 certified', 'PVC-D technology', 'Lightweight', 'SN2/SN4/SN8 classes'],
         productCount: 40,
         catalogLinks: [
@@ -125,7 +137,7 @@ export const productCategories = [
         slug: 'aquasafe',
         tagline: 'uPVC PRESSURE PIPES FOR AGRICULTURE & WATER TRANSPORT',
         description: 'uPVC pressure pipes for agriculture - IS:7834, IS:4985, IS:10124 certified',
-        image: '/images/aquasafe-pipes.jpg',
+        image: aquasafeImage,
         features: ['IS certified', 'Lead-free', 'Multi-pressure', 'Agriculture use'],
         productCount: 166,
         catalogLinks: [

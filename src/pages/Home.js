@@ -52,7 +52,7 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Product Categories */}
+            {/* Product Categories - Compact Grid */}
             <section className="section product-categories">
                 <div className="container">
                     <RevealSection>
@@ -62,11 +62,11 @@ const Home = () => {
                         </div>
                     </RevealSection>
 
-                    <div className="categories-grid">
+                    <div className="products-showcase">
                         {productCategories
                             .filter(cat => ['cpvc', 'aquarius', 'silencio', 'drainmaster', 'drainpro', 'drex', 'underground', 'telerex', 'foamcore', 'aquasafe'].includes(cat.slug))
                             .map((category, index) => (
-                                <CategoryCard key={category.id} category={category} index={index} />
+                                <ProductTile key={category.id} category={category} index={index} />
                             ))}
                     </div>
 
@@ -171,30 +171,33 @@ const TrustBadge = ({ icon, text, delay }) => {
     );
 };
 
-// Category Card Component
-const CategoryCard = ({ category, index }) => {
+// Product Tile Component - Compact Design with Images
+const ProductTile = ({ category, index }) => {
     const [ref, isRevealed] = useScrollReveal({ threshold: 0.2 });
+    const catalogLink = category.catalogLinks?.[0]?.url;
+
     return (
         <Link
-            to={`/products/${category.slug}`}
+            to={catalogLink || `/products/${category.slug}`}
             ref={ref}
-            className={`category-card reveal reveal-stagger ${isRevealed ? 'revealed' : ''}`}
+            className={`product-tile reveal reveal-stagger ${isRevealed ? 'revealed' : ''}`}
+            style={{ '--delay': `${index * 50}ms` }}
         >
-            <div className="category-image">
-                <div className="category-image-placeholder">{category.name[0]}</div>
+            <div className="tile-image">
+                {category.image ? (
+                    <img src={category.image} alt={category.name} />
+                ) : (
+                    <span className="tile-letter">{category.name[0]}</span>
+                )}
             </div>
-            <div className="category-info">
-                <h3>{category.name}</h3>
-                <p>{category.description}</p>
-                <div className="category-features">
-                    {category.features.slice(0, 2).map((feature, i) => (
-                        <span key={i} className="feature-tag">{feature}</span>
-                    ))}
-                </div>
-                <div className="category-link">
-                    View Products <ChevronRight size={18} />
-                </div>
+            <div className="tile-content">
+                <h4>{category.name}</h4>
+                <p className="tile-tagline">{category.tagline}</p>
+                {category.productCount && (
+                    <span className="tile-count">{category.productCount} Products</span>
+                )}
             </div>
+            <ChevronRight className="tile-arrow" size={20} />
         </Link>
     );
 };
