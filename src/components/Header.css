@@ -36,7 +36,6 @@
     align-items: center;
     text-decoration: none;
     transition: transform var(--transition-fast);
-    gap: 2px;
 }
 
 .header-logo:hover {
@@ -55,6 +54,7 @@
     color: var(--color-gray-700);
     letter-spacing: 1px;
     text-transform: uppercase;
+    margin-top: -8px;
 }
 
 .header-scrolled .logo-image {
