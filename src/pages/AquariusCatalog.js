@@ -1,150 +1,92 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Filter, ShoppingCart } from 'lucide-react';
+import { Search, ShoppingCart, ChevronDown, ChevronUp } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useParallax } from '../hooks/useParallax';
-import { aquariusCatalog, formatPrice, getAllAquariusProducts, getAquariusSchedules, getAquariusLengths } from '../data/aquariusCatalog';
+import { aquariusCatalog, formatPrice } from '../data/aquariusCatalog';
 import { companyInfo } from '../data/content';
 import './AquariusCatalog.css';
 
 const AquariusCatalog = () => {
     const parallaxRef = useParallax({ speed: 0.4 });
     const [searchTerm, setSearchTerm] = useState('');
-    const [selectedSchedule, setSelectedSchedule] = useState('all');
-    const [selectedLength, setSelectedLength] = useState('all');
+    const [expandedGroups, setExpandedGroups] = useState({});
 
-    const allItems = useMemo(() => getAllAquariusProducts(), []);
-    const schedules = useMemo(() => getAquariusSchedules(), []);
-    const lengths = useMemo(() => getAquariusLengths(), []);
+    const sections = aquariusCatalog.sections;
+    const totalProducts = sections.reduce((sum, s) => sum + s.items.length, 0);
 
-    // Filter items based on search and filters
-    const filteredItems = useMemo(() => {
-        return allItems.filter(item => {
-            const matchesSearch = searchTerm === '' ||
-                item.size_inch.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                item.size_cm.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                item.product_code.toLowerCase().includes(searchTerm.toLowerCase());
+    const filteredSections = useMemo(() => {
+        if (!searchTerm) return sections;
+        return sections.map(section => ({
+            ...section,
+            items: section.items.filter(item =>
+                item.size_inch?.includes(searchTerm) ||
+                item.product_code?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                section.name.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+        })).filter(section => section.items.length > 0);
+    }, [sections, searchTerm]);
 
-            const matchesSchedule = selectedSchedule === 'all' || item.schedule === selectedSchedule;
-            const matchesLength = selectedLength === 'all' || item.length === selectedLength;
-
-            return matchesSearch && matchesSchedule && matchesLength;
-        });
-    }, [allItems, searchTerm, selectedSchedule, selectedLength]);
-
-    const clearFilters = () => {
-        setSearchTerm('');
-        setSelectedSchedule('all');
-        setSelectedLength('all');
-    };
+    const toggleGroup = (name) => setExpandedGroups(prev => ({ ...prev, [name]: !prev[name] }));
+    const expandAll = () => { const all = {}; sections.forEach(s => all[s.name] = true); setExpandedGroups(all); };
+    const collapseAll = () => setExpandedGroups({});
 
     return (
         <div className="aquarius-catalog-page">
-            {/* Header */}
             <section className="catalog-hero">
                 <div className="catalog-hero-parallax" ref={parallaxRef}></div>
                 <div className="container">
-                    <div className="breadcrumb">
-                        <Link to="/">Home</Link> / <Link to="/products">Products</Link> / <Link to="/products/aquarius">Aquarius</Link> / Catalog
-                    </div>
+                    <div className="breadcrumb"><Link to="/">Home</Link> / <Link to="/products">Products</Link> / Aquarius Catalog</div>
                     <div className="hero-content-flex">
                         <div>
                             <h1>{aquariusCatalog.title}</h1>
-                            <p className="hsn-code">HSN Code: {aquariusCatalog.hsn_code}</p>
-                            <p className="catalog-subtitle">{aquariusCatalog.description}</p>
-                            <p className="catalog-subtitle">Complete catalog with {allItems.length} products</p>
+                            <p className="hsn-code">HSN: {aquariusCatalog.hsn_code}</p>
+                            <p className="catalog-subtitle">{totalProducts} products in {sections.length} categories</p>
                         </div>
                         <div className="hero-stats">
-                            <div className="stat">
-                                <span className="stat-number">{aquariusCatalog.sections.length}</span>
-                                <span className="stat-label">Variants</span>
-                            </div>
-                            <div className="stat">
-                                <span className="stat-number">{allItems.length}</span>
-                                <span className="stat-label">Products</span>
-                            </div>
+                            <div className="stat"><span className="stat-number">{sections.length}</span><span className="stat-label">Categories</span></div>
+                            <div className="stat"><span className="stat-number">{totalProducts}</span><span className="stat-label">Products</span></div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Filters Section */}
             <section className="filters-section">
                 <div className="container">
                     <div className="filters-bar">
                         <div className="search-box">
                             <Search size={20} />
-                            <input
-                                type="text"
-                                placeholder="Search by size, product code..."
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                                className="search-input"
-                            />
+                            <input type="text" placeholder="Search by size, code, type..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="search-input" />
                         </div>
-
-                        <div className="filter-group">
-                            <Filter size={18} />
-                            <select
-                                value={selectedSchedule}
-                                onChange={(e) => setSelectedSchedule(e.target.value)}
-                                className="filter-select"
-                            >
-                                <option value="all">All Schedules</option>
-                                {schedules.map(schedule => (
-                                    <option key={schedule} value={schedule}>Schedule {schedule}</option>
-                                ))}
-                            </select>
-
-                            <select
-                                value={selectedLength}
-                                onChange={(e) => setSelectedLength(e.target.value)}
-                                className="filter-select"
-                            >
-                                <option value="all">All Lengths</option>
-                                {lengths.map(length => (
-                                    <option key={length} value={length}>{length}</option>
-                                ))}
-                            </select>
-
-                            {(searchTerm || selectedSchedule !== 'all' || selectedLength !== 'all') && (
-                                <button onClick={clearFilters} className="btn-clear">
-                                    Clear Filters
-                                </button>
-                            )}
+                        <div className="expand-controls">
+                            <button onClick={expandAll} className="btn-expand">Expand All</button>
+                            <button onClick={collapseAll} className="btn-expand">Collapse All</button>
                         </div>
-                    </div>
-
-                    <div className="results-info">
-                        Showing <strong>{filteredItems.length}</strong> of <strong>{allItems.length}</strong> products
                     </div>
                 </div>
             </section>
 
-            {/* Catalog Table */}
             <section className="section catalog-content">
                 <div className="container">
-                    <AquariusTable items={filteredItems} />
+                    {filteredSections.length === 0 ? (
+                        <div className="no-results"><p>No products found.</p></div>
+                    ) : (
+                        <div className="product-groups">
+                            {filteredSections.map(section => (
+                                <ProductGroup key={section.name} section={section} isExpanded={expandedGroups[section.name] !== false} onToggle={() => toggleGroup(section.name)} />
+                            ))}
+                        </div>
+                    )}
                 </div>
             </section>
 
-            {/* CTA */}
             <section className="section-sm catalog-cta">
                 <div className="container text-center">
-                    <h2>Need Bulk Aquarius Pipes?</h2>
-                    <p>Contact us for special rates on bulk orders and project supplies</p>
+                    <h2>Need Aquarius Pipes?</h2>
+                    <p>Contact us for special rates on bulk orders</p>
                     <div className="cta-buttons">
-                        <Link to="/quote" className="btn btn-primary btn-lg">
-                            Request Bulk Quote
-                        </Link>
-                        <a
-                            href={`https://wa.me/${companyInfo.contact.whatsapp}?text=Hi, I need pricing for Aquarius Pipes`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn btn-lg whatsapp-btn"
-                        >
-                            WhatsApp Inquiry
-                        </a>
+                        <Link to="/quote" className="btn btn-primary btn-lg">Request Quote</Link>
+                        <a href={`https://wa.me/${companyInfo.contact.whatsapp}?text=Hi, I need Aquarius Pipes`} target="_blank" rel="noopener noreferrer" className="btn btn-lg whatsapp-btn">WhatsApp Inquiry</a>
                     </div>
                 </div>
             </section>
@@ -152,80 +94,35 @@ const AquariusCatalog = () => {
     );
 };
 
-const AquariusTable = ({ items }) => {
-    const [ref, isRevealed] = useScrollReveal({ threshold: 0.05 });
-
-    if (items.length === 0) {
-        return (
-            <div className="no-results">
-                <p>No products found matching your filters.</p>
-                <p>Try adjusting your search or filters.</p>
-            </div>
-        );
-    }
-
+const ProductGroup = ({ section, isExpanded, onToggle }) => {
+    const [ref, isRevealed] = useScrollReveal({ threshold: 0.1 });
     return (
-        <div ref={ref} className={`catalog-table-container reveal ${isRevealed ? 'revealed' : ''}`}>
-            <div className="table-scroll">
-                <table className="price-table">
-                    <thead>
-                        <tr>
-                            <th>Schedule</th>
-                            <th>Length</th>
-                            <th>Size</th>
-                            <th>Product Code</th>
-                            <th>Std. Pkg</th>
-                            <th className="price-col">Price/Pc</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {items.map((item, index) => (
-                            <AquariusRow key={`${item.product_code}-${index}`} item={item} />
-                        ))}
-                    </tbody>
-                </table>
+        <div ref={ref} className={`product-group reveal ${isRevealed ? 'revealed' : ''}`}>
+            <div className="group-header" onClick={onToggle}>
+                <div className="group-title"><h3>{section.name}</h3><span className="group-count">{section.items.length} products</span></div>
+                {isExpanded ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
             </div>
+            {isExpanded && (
+                <div className="group-items">
+                    {section.items.map((item, i) => <ProductCard key={`${item.product_code}-${i}`} item={item} sectionName={section.name} />)}
+                </div>
+            )}
         </div>
     );
 };
 
-const AquariusRow = ({ item }) => {
-    const whatsappMessage = `Hi, I'm interested in Astral Aquarius Pipe:\n- Schedule: ${item.schedule}\n- Length: ${item.length}\n- Size: ${item.size_inch}" (${item.size_cm}cm)\n- Product Code: ${item.product_code}\n- Price: ${formatPrice(item.price_inr_per_pc)}/piece\n\nPlease provide more details.`;
-
+const ProductCard = ({ item, sectionName }) => {
+    const msg = `Hi, I'm interested in Aquarius Pipe:\n- Type: ${sectionName}\n- Size: ${item.size_inch}" (${item.size_cm}cm)\n- Code: ${item.product_code}\n- Price: ${formatPrice(item.price_inr_per_pc)}`;
     return (
-        <tr className="price-row">
-            <td data-label="Schedule">
-                <span className="schedule-badge">Sch {item.schedule}</span>
-            </td>
-            <td data-label="Length">
-                <span className="length-badge">{item.length}</span>
-            </td>
-            <td data-label="Size">
-                <strong>{item.size_inch}"</strong>
-                <span className="size-cm">({item.size_cm}cm)</span>
-            </td>
-            <td data-label="Code">
-                <code className="product-code">{item.product_code}</code>
-            </td>
-            <td data-label="Std. Pkg">
-                <span className="pkg-qty">{item.std_pkg}</span>
-            </td>
-            <td data-label="Price" className="price-col">
-                <span className="price">{formatPrice(item.price_inr_per_pc)}</span>
-            </td>
-            <td data-label="Action" className="action-col">
-                <a
-                    href={`https://wa.me/${companyInfo.contact.whatsapp}?text=${encodeURIComponent(whatsappMessage)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-sm btn-primary inquiry-btn"
-                >
-                    <ShoppingCart size={14} />
-                    Inquire
-                </a>
-            </td>
-        </tr>
+        <div className="product-card">
+            <div className="card-size">{item.size_inch}"</div>
+            <div className="card-details">
+                <span className="card-cm">{item.size_cm}cm</span>
+                <code className="card-code">{item.product_code}</code>
+                <span className="card-price">{formatPrice(item.price_inr_per_pc)}</span>
+            </div>
+            <a href={`https://wa.me/${companyInfo.contact.whatsapp}?text=${encodeURIComponent(msg)}`} target="_blank" rel="noopener noreferrer" className="card-inquiry"><ShoppingCart size={14} /></a>
+        </div>
     );
 };
 
