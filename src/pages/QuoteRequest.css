@@ -1,0 +1,150 @@
+.quote-page {
+    padding-top: 80px;
+    position: relative;
+    min-height: 100vh;
+}
+
+.quote-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 102, 204, 0.05), rgba(0, 82, 163, 0.05));
+    z-index: -1;
+    will-change: transform;
+}
+
+.quote-section {
+    padding: var(--space-8) 0 var(--space-12);
+}
+
+.quote-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-10);
+    align-items: start;
+}
+
+/* Quote Form */
+.quote-form-wrapper {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-2xl);
+    padding: var(--space-8);
+}
+
+.quote-form-wrapper h1 {
+    margin-bottom: var(--space-2);
+}
+
+.form-intro {
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-6);
+}
+
+.quote-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+}
+
+/* Trust Panel */
+.trust-panel {
+    position: sticky;
+    top: 100px;
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    padding: var(--space-8);
+}
+
+.trust-panel h2 {
+    margin-bottom: var(--space-3);
+}
+
+.trust-panel>p {
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-6);
+}
+
+.trust-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    margin-bottom: var(--space-8);
+}
+
+.trust-point {
+    display: flex;
+    gap: var(--space-4);
+    align-items: start;
+}
+
+.trust-point svg {
+    color: var(--color-primary);
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.trust-point h4 {
+    font-size: var(--font-lg);
+    margin-bottom: var(--space-1);
+    color: var(--color-gray-900);
+}
+
+.trust-point p {
+    font-size: var(--font-sm);
+    color: var(--color-gray-600);
+    margin: 0;
+}
+
+/* Alt Contact */
+.alt-contact {
+    padding: var(--space-5);
+    background: rgba(37, 211, 102, 0.1);
+    border-radius: var(--radius-lg);
+    text-align: center;
+}
+
+.alt-contact h4 {
+    margin-bottom: var(--space-3);
+    color: var(--color-gray-800);
+}
+
+.whatsapp-btn {
+    background: #25D366;
+    color: white;
+    border: none;
+}
+
+.whatsapp-btn:hover {
+    background: #20BA5A;
+}
+
+.pulse-btn {
+    animation: pulse 2s infinite;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .quote-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+
+    .trust-panel {
+        position: relative;
+        top: 0;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}

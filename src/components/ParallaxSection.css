@@ -1,0 +1,58 @@
+.parallax-section {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.parallax-section-bg {
+    position: absolute;
+    inset: -10%;
+    background:
+        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    will-change: transform;
+    z-index: 0;
+}
+
+.parallax-section-primary .parallax-section-bg {
+    background-color: var(--color-gray-50);
+}
+
+.parallax-section-secondary .parallax-section-bg {
+    background: linear-gradient(135deg, rgba(0, 102, 204, 0.02), rgba(0, 82, 163, 0.05));
+}
+
+.parallax-section-light .parallax-section-bg {
+    background-color: var(--color-white);
+}
+
+/* Floating Shapes */
+.parallax-shape {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform;
+    z-index: 0;
+}
+
+.parallax-shape-1 {
+    top: 15%;
+    right: 10%;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(0, 102, 204, 0.08) 0%, transparent 70%);
+    animation: floatSlow 25s ease-in-out infinite;
+}
+
+.parallax-shape-2 {
+    bottom: 20%;
+    left: 8%;
+    width: 180px;
+    height: 180px;
+    background: rgba(0, 102, 204, 0.05);
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+    animation: floatSlow 20s ease-in-out infinite reverse;
+}
+
+.parallax-section-content {
+    position: relative;
+    z-index: 1;
+}
