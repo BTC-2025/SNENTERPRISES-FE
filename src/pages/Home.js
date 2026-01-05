@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle, Star, ChevronRight } from 'lucide-react';
+import { ArrowRight, CheckCircle, Star, ChevronRight, ChevronLeft } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useParallax } from '../hooks/useParallax';
 import { productCategories } from '../data/products';
 import { testimonials } from '../data/testimonials';
 import { whyChooseUs } from '../data/content';
+import pipe1 from '../assets/pipe-1.jpg';
+import pipe2 from '../assets/pipe-2.jpg';
+import pipe3 from '../assets/pipe-3.jpg';
+import pipe4 from '../assets/pipe-4.jpg'
 import './Home.css';
 
 const Home = () => {
@@ -13,31 +17,9 @@ const Home = () => {
 
     return (
         <div className="home">
-            {/* Hero Section with Parallax */}
-            <section className="hero">
-                <div className="hero-parallax" ref={parallaxRef}></div>
-                <div className="hero-content container">
-                    <RevealSection>
-                        <div className="hero-text">
-                            <h1 className="hero-title">
-                                <span className="hero-title-main">SN Enterprises</span>
-                                <span className="hero-title-sub">Authorized Astral Pipes Dealer</span>
-                            </h1>
-                            <p className="hero-subtitle">
-                                Premium CPVC, UPVC & SWR Pipes • Genuine Astral Products • Best Dealer Pricing • Fast Delivery Across Region
-                            </p>
-                            <div className="hero-cta">
-                                <Link to="/products" className="btn btn-primary btn-lg">
-                                    Explore Products
-                                    <ArrowRight size={20} />
-                                </Link>
-                                <Link to="/quote" className="btn btn-secondary btn-lg">
-                                    Request a Quote
-                                </Link>
-                            </div>
-                        </div>
-                    </RevealSection>
-                </div>
+            {/* Hero Section - Full Width Carousel */}
+            <section className="hero-carousel-section">
+                <HeroCarousel images={[pipe1, pipe2]} />
             </section>
 
             {/* Trust Badges */}
@@ -249,4 +231,39 @@ const TestimonialCard = ({ testimonial, index }) => {
     );
 };
 
+// Hero Carousel Component
+const HeroCarousel = ({ images }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % images.length);
+        }, 4000);
+        return () => clearInterval(interval);
+    }, [images.length]);
+
+    return (
+        <div className="hero-carousel">
+            <div className="carousel-track" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+                {images.map((img, i) => (
+                    <div key={i} className="carousel-slide">
+                        <img src={img} alt={`Astral Pipes ${i + 1}`} />
+                    </div>
+                ))}
+            </div>
+            <div className="carousel-dots">
+                {images.map((_, i) => (
+                    <button
+                        key={i}
+                        className={`carousel-dot ${i === currentIndex ? 'active' : ''}`}
+                        onClick={() => setCurrentIndex(i)}
+                        aria-label={`Go to slide ${i + 1}`}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+};
+
 export default Home;
+
