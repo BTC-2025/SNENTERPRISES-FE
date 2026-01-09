@@ -6,10 +6,8 @@ import { useParallax } from '../hooks/useParallax';
 import { productCategories } from '../data/products';
 import { testimonials } from '../data/testimonials';
 import { whyChooseUs } from '../data/content';
-import pipe1 from '../assets/pipe-1.jpg';
-import pipe2 from '../assets/pipe-2.jpg';
-import pipe3 from '../assets/pipe-3.jpg';
-import pipe4 from '../assets/pipe-4.jpg'
+import pipe1 from '../assets/name1.jpg';
+import pipe2 from '../assets/name2.jpg';
 import './Home.css';
 
 const Home = () => {
